@@ -1,2 +1,4 @@
-/excel/
-/result/
+excel/*
+result/*
+!excel/readme.txt
+!result/readme.txt
