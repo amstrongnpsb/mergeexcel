@@ -1,8 +1,6 @@
 import os
 import pandas as pd
 from datetime import datetime
-import time
-import threading
 
 # Set the folder path where the Excel files are located
 folder_path = './excel'
@@ -15,19 +13,15 @@ def read_excel_file(file_path):
     df = pd.read_excel(file_path)
     all_data.append(df)
 
-# Function to display the loading spinner
-def display_spinner():
-    spinner = ['|', '/', '-', '\\']
-    while not done:
-        for i in spinner:
-            print(f"Processing... {i}", end='\r')
-            time.sleep(0.2)
+# Function to display initial processing message
+def display_initial_processing_message():
+    print("Processing...")
 
-# Start the loading spinner in a separate thread
-done = False
-spinner_thread = threading.Thread(target=display_spinner)
-spinner_thread.start()
-
+# Function to display processing completed message
+def display_processing_completed_message():
+    print("Processing completed!")
+# Start the initial processing message
+display_initial_processing_message()
 # Loop through all files in the folder
 for file_name in os.listdir(folder_path):
     # Check if the file is an Excel file
@@ -38,10 +32,8 @@ for file_name in os.listdir(folder_path):
         # Read the Excel file into a DataFrame
         read_excel_file(file_path)
 
-# Signal the spinner thread to stop
-done = True
-spinner_thread.join()
-print("Processing completed!")
+# Display the processing completed message
+display_processing_completed_message()
 
 # Concatenate all DataFrames in the list into a single DataFrame
 merged_data = pd.concat(all_data, ignore_index=True)
