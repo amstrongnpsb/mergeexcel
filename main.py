@@ -15,11 +15,11 @@ def read_excel_file(file_path):
 
 # Function to display initial processing message
 def display_initial_processing_message():
-    print("Processing...")
+    print("Reading Excel files...")
 
 # Function to display processing completed message
 def display_processing_completed_message():
-    print("Processing completed!")
+    print("Merging files...")
 # Start the initial processing message
 display_initial_processing_message()
 # Loop through all files in the folder
