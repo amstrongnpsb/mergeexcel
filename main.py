@@ -14,14 +14,14 @@ def read_excel_file(file_path):
     all_data.append(df)
 
 # Function to display initial processing message
-def display_initial_processing_message():
+def initial_processing_message():
     print("Reading Excel files...")
 
 # Function to display processing completed message
-def display_processing_completed_message():
+def merged_processing_message():
     print("Merging files...")
 # Start the initial processing message
-display_initial_processing_message()
+initial_processing_message()
 # Loop through all files in the folder
 for file_name in os.listdir(folder_path):
     # Check if the file is an Excel file
@@ -33,7 +33,7 @@ for file_name in os.listdir(folder_path):
         read_excel_file(file_path)
 
 # Display the processing completed message
-display_processing_completed_message()
+merged_processing_message()
 
 # Concatenate all DataFrames in the list into a single DataFrame
 merged_data = pd.concat(all_data, ignore_index=True)
